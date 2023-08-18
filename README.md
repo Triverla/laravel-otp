@@ -55,13 +55,62 @@ OTP_TRANSPORT_SMS=false
 
 You can use custom classes for your Mail and SMS notifications. You can either add it via `.env` or in `config/otp.php` 
 
+## Usage
+Import the facade class:
+
+```php
+use Triverla\LaravelOtp\Facades\Otp;
+```
+
+or 
+```php
+otp()
+```
+
+**Generate an OTP:**
+
+```php
+$otp = Otp::generate($unique_secret); // string
+$otp = otp()->generate($unique_secret); // string
+
+```
+
+**Verify an OTP:**
+
+```php
+$otp = Otp::generate($unique_secret); 
+
+$check = otp()->verify($otp, $unique_secret); // bool
+
+```
+
+**Regenerate an OTP:**
+This can be used to resend same or different OTP
+
+```php
+
+$otp = otp()->regenerate($unique_secret, false); // true to change OTP and false to use same OTP
+
+```
+
+**Generate an OTP & Send sms or mail notification to recipient:**
+
+```php
+use Triverla\LaravelOtp\Helpers\OtpNotificationRequest;
+
+$sendOtp = Otp::notify(new OtpNotificationRequest(otp()->generate($unique_secret), $emailAddress, $mobileNumber)); // bool
+
+// $emailAddress and $mobileNumber are nullable. You can use both, one or none.
+```
+
+
 ### Contributing
 
 Please feel free to fork this package and contribute by submitting a pull request to enhance the functionalities.
 
 ### Bugs & Issues
 
-If you notice any bug or issues with this package kindly create and issues here [ISSUES](https://github.com/triverla/laravel-monnify/issues)
+If you notice any bug or issues with this package kindly create and issues here [ISSUES](https://github.com/triverla/laravel-otp/issues)
 
 ### Security
 
