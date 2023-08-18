@@ -1,0 +1,53 @@
+{
+    "name": "triverla/laravel-otp",
+    "description": "Laravel package for OTP Generation and Validation",
+    "type": "library",
+    "license": "MIT",
+    "config": {
+        "sort-packages": true
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit --colors=always"
+    },
+    "autoload": {
+        "psr-4": {
+            "Triverla\\LaravelOtp\\": "src/"
+        },
+        "files": [
+            "src/Helpers/Helper.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Triverla\\LaravelOtp\\Tests\\": "tests"
+        }
+    },
+    "authors": [
+        {
+            "name": "Benaiah Yusuf",
+            "email": "yusufbenaiah@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^8.1",
+        "illuminate/support": "^8.0|^9.0|^10.0",
+        "illuminate/cache": "^8.0|^9.0|^10.0",
+        "illuminate/filesystem": "^8.0|^9.0|^10.0"
+    },
+    "require-dev": {
+        "laravel/legacy-factories": "^1.0",
+        "orchestra/testbench": "^6.0|^7.0|^8.0",
+        "phpunit/phpunit": "^9.3"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Triverla\\Otp\\OtpServiceProvider"
+            ],
+            "aliases": {
+                "Otp": "Triverla\\Otp\\Facades\\Otp"
+            }
+        }
+    }
+}
