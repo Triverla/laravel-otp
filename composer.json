@@ -3,6 +3,18 @@
     "description": "Laravel package for OTP Generation and Validation",
     "type": "library",
     "license": "MIT",
+    "keywords": [
+        "triverla",
+        "otp",
+        "one time password",
+        "laravel one time password",
+        "laravel one-time-password",
+        "php otp",
+        "laravel otp",
+        "laravel-otp",
+        "otp generator",
+        "otp verification"
+    ],
     "config": {
         "sort-packages": true
     },

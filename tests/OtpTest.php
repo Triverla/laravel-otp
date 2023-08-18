@@ -2,6 +2,7 @@
 
 namespace Triverla\LaravelOtp\Tests;
 
+use Triverla\LaravelOtp\Exceptions\InvalidArgumentException;
 use Triverla\LaravelOtp\Facades\Otp;
 use Triverla\LaravelOtp\Helpers\OtpNotificationRequest;
 
@@ -116,6 +117,29 @@ class OtpTest extends TestCase
         $otp = $manager->notify(new OtpNotificationRequest($manager->generate('foo'), null, '+1234567890'));
 
         $this->assertTrue($otp);
+    }
+
+    public function test_it_wont_notify_without_recipients()
+    {
+        $manager = new MockOtp();
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Email and Mobile Number cannot be blank');
+
+        $manager->notify(new OtpNotificationRequest($manager->generate('foo'), null, null));
+
+
+    }
+
+    public function test_it_wont_notify_without_otp()
+    {
+        $manager = new MockOtp();
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('OTP is required');
+
+        $manager->notify(new OtpNotificationRequest('', 'foo@mail.com', null));
+
     }
 
     public function test_it_can_regenerate_otp()
