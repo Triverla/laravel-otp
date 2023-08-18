@@ -100,7 +100,7 @@ use Triverla\LaravelOtp\Helpers\OtpNotificationRequest;
 
 $sendOtp = Otp::notify(new OtpNotificationRequest(otp()->generate($unique_secret), $emailAddress, $mobileNumber)); // bool
 
-// $emailAddress and $mobileNumber are nullable. You can use both, one or none.
+// $emailAddress and $mobileNumber are nullable. You can use both or either.
 ```
 
 
