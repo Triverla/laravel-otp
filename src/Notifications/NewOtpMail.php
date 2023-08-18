@@ -27,7 +27,7 @@ class NewOtpMail extends Notification implements ShouldQueue
     {
         return (new MailMessage)
             ->subject('One Time Password(OTP) for verification')
-            ->line("Here is your one time password for verification is {$this->otp}")
+            ->line("Here is your one time password for verification <b>{$this->otp}</b>")
             ->line('Please use within 15 mins and do not share OTP with anyone.');
     }
 
